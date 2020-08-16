@@ -101,15 +101,16 @@ def predict():
 
         Gama = request.form['Gama']
         if (Gama == 'High'):
-            gama = 2
+            gama = 1.9
         elif (Gama == 'Low'):
-            gama = 0.9
+            gama = 0.5
         else:
-            gama = 1.3
+            gama = 1
 
         prediction = model.predict([[km_driven, years_old, fuel_CNG, fuel_Diesel, fuel_Electric, fuel_LPG, fuel_Petrol, seller_type_Dealer, seller_type_Individual, seller_type_TrustmarkDealer, transmission_Automatic, transmission_Manual, owner_First_Owner, owner_Fourth_Above_Owner, owner_Second_Owner, owner_Test_Drive_Car, owner_Third_Owner]])
         output = round(prediction[0],2)
-        output = float(output) * float(gama) / 60 
+        output = float(output) * float(gama)
+        output = float(output)/62 
         output = round(prediction[0],2)
 
         if output<0:
