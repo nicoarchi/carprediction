@@ -110,8 +110,8 @@ def predict():
         prediction = model.predict([[km_driven, years_old, fuel_CNG, fuel_Diesel, fuel_Electric, fuel_LPG, fuel_Petrol, seller_type_Dealer, seller_type_Individual, seller_type_TrustmarkDealer, transmission_Automatic, transmission_Manual, owner_First_Owner, owner_Fourth_Above_Owner, owner_Second_Owner, owner_Test_Drive_Car, owner_Third_Owner]])
         output = round(prediction[0],2)
         output = float(output) * float(gama)
-        output = float(output)/62 
-        output = round(prediction[0],2)
+        output = float(output)/62
+        output = round(output,2)
 
         if output<0:
             return render_template('index.html',prediction_texts="Error en el cálculo del precio")
@@ -123,3 +123,7 @@ def predict():
 
 if __name__=="__main__":
     app.run(debug=True)
+        
+
+        
+        
