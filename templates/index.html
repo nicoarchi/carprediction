@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Price Predictor</title>
+  </head>
+  <body>
+    <div style="color: black;">
+      <form action="{{ url_for('predict') }}" method="POST">
+        <h2>Análisis predictivo del precio de automóviles usados</h2>
+        <hr />
+        <h3>De qué año es su automovil?</h3>
+        <input id="Year" name="Year" type="number" required="required" />
+        <br />
+        <h3>Cuántos Km ha recorrido?</h3>
+        <input
+          id="Kmdriven"
+          name="Kmdriven"
+          type="number"
+          required="required"
+        />
+        <br />
+        <h3>Qué combustible utiliza?</h3>
+        <select id="Fuel" name="Fuel" required="required">
+          <option value="Fuel_GNC">GNC - Gas Natural Comprimido</option>
+          <option value="Fuel_Diesel">Diesel</option>
+          <option value="Fuel_Elecric">Elécrica</option>
+          <option value="Fuel_LPG">GLP - Gas Licuado de Petróleo</option>
+          <option value="Fuel_Petrol">Gasolina</option>
+        </select>
+        <br />
+        <h3>Eres dueño directo o agencia?</h3>
+        <select id="Seller" name="Seller" required="required">
+          <option value="Dealer">Agencia</option>
+          <option value="Individual">Dueño directo</option>
+        </select>
+        <br />
+        <h3>Transmisión manual o automática?</h3>
+        <select id="Transmission" name="Transmission" required="required">
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automática</option>
+        </select>
+        <br />
+        <h3>Cuántos dueños ha tenido su automóvil?</h3>
+        <select id="Owner" name="Owner" required="required">
+          <option value="Owner1">Soy primer dueño</option>
+          <option value="Owner2">Soy segundo dueño</option>
+          <option value="Owner3">Soy tercer dueño</option>
+          <option value="Owner4">Soy cuarto dueño o posterior</option>
+        </select>
+        <br />
+        <h3>Gama alta, media o baja?</h3>
+        <select id="Gama" name="Gama" required="required">
+          <option value="High">Gama alta</option>
+          <option value="Medium">Gama media</option>
+          <option value="Low">Gama baja</option>
+        </select>
+        <br />
+        <br />
+        <button type="submit" id="submit">Calcula el precio</button>
+        <br />
+      </form>
+      <h3>{{ prediction_text }}</h3>
+    </div>
+  </body>
+</html>
